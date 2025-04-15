@@ -1,0 +1,38 @@
+services:
+  web:
+      image: nginx
+      ports:
+        - 8081:80
+      volumes:
+        - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+        - .:/var/www/html
+      restart: always
+      depends_on:
+        - php-fpm
+        - db
+  php-fpm:
+      build: ./docker/php
+      restart: always
+      volumes:
+        - .:/var/www/html
+        - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-xdebug.ini
+  db:
+      image: postgres:13
+      restart: always
+      environment:
+        POSTGRES_DB: ${DB_DATABASE}
+        POSTGRES_USER: ${DB_USERNAME}
+        POSTGRES_PASSWORD: ${DB_PASSWORD}
+      ports:
+       - 54325:5432
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: always
+    environment:
+        - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
+        - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD}
+    ports:
+        - "5672:5672"  # AMQP порт
+        - "15672:15672"  # Web UI порт
+    volumes:
+        - .:/var/lib/rabbitmq
