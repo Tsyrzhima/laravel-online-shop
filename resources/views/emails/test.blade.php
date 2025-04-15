@@ -4,7 +4,7 @@
     <title>Тестовое письмо</title>
 </head>
 <body>
-    <h1>Привет!</h1>
+    <h1>Привет! {{$name}}</h1>
 </body>
 </html>
 
