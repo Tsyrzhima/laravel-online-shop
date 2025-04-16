@@ -13,6 +13,8 @@ services:
   php-fpm:
       build: ./docker/php
       restart: always
+      depends_on:
+          -   redis
       volumes:
         - .:/var/www/html
         - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-xdebug.ini
