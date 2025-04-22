@@ -40,6 +40,7 @@ class OrderController
             $data['address'],
         );
         $this->orderService->create($dto);
+
         return response()->redirectTo('/user-orders');
     }
 

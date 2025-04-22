@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\DTO\OrderCreateDTO;
+use App\Jobs\SendHttpRequest;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\User;
@@ -43,12 +44,16 @@ class OrderService
             }
             UserProduct::query()->where('user_id', $user->id)->delete();
 
+            SendHttpRequest::dispatch($order);
+
             DB::commit();
         }catch (\Throwable $exception){
             DB::rollBack();
 
             throw $exception;
         }
+
+
     }
 
 }

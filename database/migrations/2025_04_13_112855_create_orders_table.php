@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('user_id')->nullable(false);
             $table->string('contact_name')->nullable(false);
             $table->string('contact_phone')->nullable(false);
-            $table->text('comment');
+            $table->text('comment')->nullable();
             $table->string('address')->nullable(false);
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

@@ -12,10 +12,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $comment
  * @property string $address
  * @property int $sum
+ * @property string $yougile_task_id
  */
 class Order extends Model
 {
-    protected $fillable = ['id', 'user_id', 'contact_name', 'contact_phone', 'comment', 'address', 'sum'];
+    protected $fillable = ['id', 'user_id', 'contact_name', 'contact_phone', 'comment', 'address', 'sum', 'yougile_task_id'];
 
     public function user()
     {

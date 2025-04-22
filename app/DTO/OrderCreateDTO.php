@@ -7,7 +7,7 @@ class OrderCreateDTO
     public function __construct(
         private string $name,
         private string $phone,
-        private string $comment,
+        private ?string $comment,
         private string $address,
     ){
     }
@@ -22,7 +22,7 @@ class OrderCreateDTO
         return $this->phone;
     }
 
-    public function getComment(): string
+    public function getComment(): ?string
     {
         return $this->comment;
     }
