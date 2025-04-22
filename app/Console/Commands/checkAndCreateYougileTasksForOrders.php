@@ -6,14 +6,14 @@ use App\Jobs\SendHttpRequest;
 use App\Models\Order;
 use Illuminate\Console\Command;
 
-class checkYougileTasksForOrders extends Command
+class checkAndCreateYougileTasksForOrders extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:check-yougile-tasks-for-orders';
+    protected $signature = 'app:check-and-create-yougile-tasks-for-orders';
 
     /**
      * The console command description.
